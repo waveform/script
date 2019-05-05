@@ -1,1 +1,1 @@
-find /home/stawan01/Pictures -type f | shuf -n 1 | xargs feh --bg-scale
+find /home/stan/Pictures -type f | shuf -n 1 | xargs feh --bg-scale
