@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 #coding:utf-8
 import sys
 import ctypes
@@ -19,14 +19,14 @@ def conv(filename):
     fin = open(filename, "r")
     lines = fin.readlines()
     for i,l in enumerate(lines):
-        print "%02d"%i,
+        print("%02d"%i, end='')
         data = l.split()[1:]
         for n in data:
-            print ("%3.4f"%h2f(int(n, 16))).rjust(10),
-        print ""
+            print(("%3.4f"%h2f(int(n, 16))).rjust(10), end='')
+        print()
 
 
 if __name__ == "__main__":
     filename = sys.argv[-1]
-    print filename
+    print(filename)
     conv(filename)

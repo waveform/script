@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import sys
 import time
 
@@ -22,20 +22,20 @@ def countdown(total):
         else:
             step = 1
             color = bcolors.WARNING
-        minutes = total/60
+        minutes = total//60
         seconds = total%60
-        remains = (total%(60*step))/step
+        remains = (total%(60*step))//step
         bar = remains*"#"+(60-remains)*" "
-        print " %s%02d:%02d %s%s\r" % (color, minutes, seconds, bar, bcolors.ENDC),
+        print(" %s%02d:%02d %s%s\r" % (color, minutes, seconds, bar, bcolors.ENDC), end='')
         sys.stdout.flush()
         time.sleep(step)
         total -= step
 
     ending = time.strftime("%H:%M:%S", time.localtime())
-    print "%s%s%s\n"%(bcolors.FAIL, "Time's Up!!!  "+ending, bcolors.ENDC);
+    print("%s%s%s\n"%(bcolors.FAIL, "Time's Up!!!  "+ending, bcolors.ENDC))
 
 def helper():
-    print "countdown.py minutes"
+    print("countdown.py minutes")
 
 if __name__ == "__main__":
     if len(sys.argv)<2: helper()

@@ -14,17 +14,19 @@ new_list = []
 line_num = 0
 
 lut = {}
-with open(history_file, "r") as f:
+with open(history_file, encoding="utf-8") as f:
     for line in f:
         line_num = line_num + 1
         mo = re.match(pattern, line)
-        if not mo: print >> sys.stderr, "[ILL FMT]: ", line_num, line,; continue
+        if not mo:
+            print("[ILL FMT]: ", line_num, line)
+            continue
         time = mo.group(1)
         cmd = mo.group(2)
         lut[cmd] = time
     new_list = sorted(lut.items(), key=operator.itemgetter(1))
 
-print("squash history file from %d line to %d line." % (line_num, len(new_list)))
+print(f"squash history file from {line_num} line to {len(new_list)} line.")
 
 with open(diet_file, "w") as f:
     for t in new_list:
